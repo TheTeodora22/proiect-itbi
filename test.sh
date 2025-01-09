@@ -1,7 +1,5 @@
 #!/bin/sh
 
-text="Empire Burlesque &lt;"
-text=$(echo "$text" | sed -e 's/&amp;/\&/g' -e 's/&lt;/</g' -e 's/&gt;/>/g' -e 's/&quot;/"/g' -e "s/&apos;/'/g")
-echo "$text"
-text=$(echo "$text" |  sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g' -e "s/'/\&apos;/g")
+text=' _text="Empire "Burlesque"'
+text=$(echo "$text" | sed 's/ _[^ =]*="[^"]*\"[^"]*\"*"[ \t]*//g;s/\[ *\]/\[\]/g; s/_[^ =]*="[^"]*\"[^"]*\"*"[ \t]*//g;s/\[ *\]/\[\]/g')
 echo "$text"
